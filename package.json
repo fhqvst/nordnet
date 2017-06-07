@@ -5,11 +5,12 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "NODE_ENV=production babel lib/ --out-dir dist/",
-    "lint": "eslint lib || true",
+    "lint": "eslint lib",
     "docs:lint": "documentation lint lib/**/*",
     "docs:build": "documentation build lib/**/* -f md -o API.md",
     "docs": "npm run docs:lint && npm run docs:build",
-    "test": "npm run start && NODE_ENV=test NODE_PATH=dist ava tests/**/*.spec.js"
+    "test": "npm run start && NODE_ENV=test NODE_PATH=dist ava tests/**/*.spec.js",
+    "prepublish": "npm run lint && npm test && npm start"
   },
   "author": "Filip Hallqvist <filiphallqvist@gmail.com>",
   "license": "MIT",
