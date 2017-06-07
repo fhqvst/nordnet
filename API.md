@@ -1,0 +1,122 @@
+### Table of Contents
+
+-   [Nordnet](#nordnet)
+    -   [call](#call)
+    -   [authenticate](#authenticate)
+    -   [subscribe](#subscribe)
+    -   [authenticateFeeds](#authenticatefeeds)
+    -   [authenticateFeed](#authenticatefeed)
+    -   [base64](#base64)
+    -   [formatFeedCommand](#formatfeedcommand)
+    -   [encryptLogin](#encryptlogin)
+
+## Nordnet
+
+**Extends EventEmitter**
+
+A simple-to-use Node.js wrapper around the Nordnet nExt API.
+
+**Parameters**
+
+-   `config`  
+
+### call
+
+Call one of the API endpoints.
+
+**Parameters**
+
+-   `method` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** HTTP method to use when calling.
+-   `endpoint` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The endpoint to call.
+-   `data` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** JSON data to send with the request.
+
+Returns **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean))** Returns an object upon success or error, or a simple
+                          boolean false if this method is called
+                          without the client being authenticated.
+
+### authenticate
+
+Authenticate the client and receive a session key. The function also keeps
+track of when the session key expires and reauthenticates automatically
+just before it does.
+
+**Parameters**
+
+-   `credentials` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Nordnet nExt API credentials.
+    -   `credentials.username` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Nordnet nExt API username
+    -   `credentials.password` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Nordnet nExt API password
+
+Returns **type** Description
+
+### subscribe
+
+Subscribe the public feed to a specific type of events.
+
+**Parameters**
+
+-   `type` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The type of events to start listening to.
+-   `args` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Arguments to pass together with the subscription command.
+
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)** Resolves when the feed is subscribed.
+
+### authenticateFeeds
+
+Authenticate all feeds and start listening for input.
+
+**Parameters**
+
+-   `config` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The configuration object for all feeds.
+    -   `config.FEED_HANDLE` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Configurations for the feed.
+        -   `config.FEED_HANDLE.host` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Host address for the feed.
+        -   `config.FEED_HANDLE.port` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Port for the feed.
+
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)** Resolves all authenticated feeds.
+
+### authenticateFeed
+
+Authenticate a single feed.
+
+**Parameters**
+
+-   `FEED_HANDLE` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)**
+-   `config` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Configuration for this feed.
+    -   `config.host` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Host address for the feed.
+    -   `config.port` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Port for the feed.
+-   `sessionKey` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The session key received at login.
+
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)** Description
+
+### base64
+
+Convert a value to base64.
+
+**Parameters**
+
+-   `value` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number))** Value to encode to base64.
+
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** A base64 encoded version of the value.
+
+### formatFeedCommand
+
+Builder to be used when sending commands to the sockets.
+
+**Parameters**
+
+-   `cmd` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** A valid feed command. One of `login`, `subscribe` or `unsibscribe`.
+-   `args` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Arguments to pass conjointly with the command.
+
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** A stringified verson of the data, with a line break at the end.
+
+### encryptLogin
+
+Base64 encodes the username, password and a timestamp, joins the
+strings with colons, encrypts the joined string using Nordnet's
+public RSA key, and finally base64 encodes the encrypted string. Phew.
+
+**Parameters**
+
+-   `username` **type** Your Nordnet nExt username.
+-   `password` **type** Your Nordnet nExt password.
+-   `keyFile` **type** Path to the public key file.
+
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The encrypted, base64 encoded authentication string.

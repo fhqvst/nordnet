@@ -1,0 +1,45 @@
+{
+  "name": "nordnet",
+  "version": "1.0.0",
+  "description": "A better wrapper for the Nordnet nExt API.",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "NODE_ENV=production babel lib/ --out-dir dist/",
+    "lint": "eslint lib || true",
+    "docs:lint": "documentation lint lib/**/*",
+    "docs:build": "documentation build lib/**/* -f md -o API.md",
+    "docs": "npm run docs:lint && npm run docs:build",
+    "test": "npm run start && NODE_ENV=test NODE_PATH=dist ava tests/**/*.spec.js"
+  },
+  "author": "Filip Hallqvist <filiphallqvist@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "ursa": "^0.9.4"
+  },
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "babel-cli": "^6.22.2",
+    "babel-eslint": "^7.1.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-3": "^6.11.0",
+    "documentation": "^4.0.0-rc.1",
+    "dotenv": "^4.0.0",
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.6.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-3"
+    ],
+    "plugins": [
+      "transform-runtime"
+    ]
+  }
+}
