@@ -68,8 +68,8 @@ nordnet.authenticate({
   // Subscribe to trade events for Nordnet B (1869) on Burgundy market (30)
   nordnet.subscribe('trades', { i: '1869', m: 30 })
   
-  // Fetch data about Nordnet B
-  nordnet.call('GET', 'instruments/1869').then(console.log) 
+  // Fetch data about VOLV A
+  nordnet.call('GET', 'instruments/16313163').then(console.log) 
 
 })
 ```
