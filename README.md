@@ -6,11 +6,11 @@ An improved Node.js wrapper around the Nordnet nExt test API.
 [![Dependency Status](https://david-dm.org/fhqvst/nordnet.svg)](https://david-dm.org/fhqvst/nordnet)
 [![devDependency Status](https://david-dm.org/fhqvst/nordnet/dev-status.svg)](https://david-dm.org/fhqvst/nordnet#info=devDependencies)
 
-## Features
+## Improvements
 
-- One-call client authentication
+- Authenticate directly in the client
 - Automatic session refresh
-- Feed support included
+- Built-in feed support
 
 ## Table of Contents
 
@@ -96,5 +96,5 @@ The GitHub [releases][changelog] page is used for changelog entries.
 [MIT](LICENSE)
 
 [axios]: https://github.com/mzabriskie/axios
-[ursa]: https://github.com/quartzjer/ursa
+[node-rsa]: https://github.com/rzcoder/node-rsa/
 [changelog]: https://github.com/fhqvst/nordnet/releases

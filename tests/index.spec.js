@@ -2,7 +2,7 @@ import test from 'ava'
 import dotenv from 'dotenv'
 import path from 'path'
 
-import Nordnet from 'index'
+import Nordnet from '../dist/index.js'
 
 dotenv.config({ path: path.join(__dirname, '..', '.env') })
 
