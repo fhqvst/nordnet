@@ -21,10 +21,10 @@
     "node-rsa": "^0.4.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.4",
-    "@babel/preset-env": "^7.0.0-beta.4",
+    "@babel/core": "^7.0.0-beta.5",
     "ava": "^0.22.0",
-    "documentation": "^4.0.0-rc.1",
+    "babel-preset-env": "^1.6.1",
+    "documentation": "^5.3.3",
     "dotenv": "^2.0.0",
     "eslint": "^3.9.1",
     "eslint-config-airbnb-base": "^11.2.0",
@@ -41,7 +41,7 @@
   "babel": {
     "presets": [
       [
-        "@babel/env",
+        "env",
         {
           "targets": {
             "node": "6.11"

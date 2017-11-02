@@ -3,7 +3,6 @@
 ### Table of Contents
 
 -   [Nordnet](#nordnet)
-    -   [constructor](#constructor)
     -   [call](#call)
     -   [authenticate](#authenticate)
     -   [subscribe](#subscribe)
@@ -22,19 +21,6 @@ A simple-to-use Node.js wrapper around the Nordnet nExt API.
 **Parameters**
 
 -   `config`  
-
-### constructor
-
-Create a new client.
-
-**Parameters**
-
--   `config` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Description
-    -   `config.sessionKey` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Add a custom sessionKey.
-    -   `config.shortenExpires` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Milliseconds before session expiration to reauthenticate.
-    -   `config.axiosConfig` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Custom settings for axios.
-
-Returns **[Nordnet](#nordnet)** A new Nordnet client.
 
 ### call
 
@@ -133,6 +119,5 @@ public RSA key, and finally base64 encodes the encrypted string. Phew.
 
 -   `username` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Your Nordnet nExt username.
 -   `password` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Your Nordnet nExt password.
--   `keyFile` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path to the public key file.
 
 Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The encrypted, base64 encoded authentication string.
