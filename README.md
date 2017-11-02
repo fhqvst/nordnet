@@ -89,12 +89,11 @@ The author of this software is not responsible for any indirect damages (foresee
 
 ## Changelog
 
-The GitHub [releases][changelog] page is used for changelog entries.
+The GitHub [releases](releases) page is used for changelog entries.
 
 ## License
 
 [MIT](LICENSE)
 
-[axios]: https://github.com/mzabriskie/axios
-[node-rsa]: https://github.com/rzcoder/node-rsa/
-[changelog]: https://github.com/fhqvst/nordnet/releases
+axios: https://github.com/mzabriskie/axios/<br>
+node-rsa: https://github.com/rzcoder/node-rsa/
